@@ -15,18 +15,18 @@ for k = 1:length(ns)
     n = ns(k);
     [t, y] = echantillonner(modele, 0, 1, n);
     // TODO 1 : utiliser les deux quadratures du CM1.
-    ET(k) = %nan;
-    ES(k) = %nan;
+    ET(k) = trapezes(t, y);
+    ES(k) = simpson(t, y);
     // TODO 2 : erreurs absolues par rapport a Iref.
-    errT(k) = %nan;
-    errS(k) = %nan;
+    errT(k) = abs(ET(k) - Iref);
+    errS(k) = abs(ES(k) - Iref);
     mprintf("n=%d T=%.9f S=%.9f ET=%.3e ES=%.3e\n", ..
             n, ET(k), ES(k), errT(k), errS(k));
 end
 for k = 1:length(ns)-1
     // TODO 3 : mesurer les ordres entre n et 2n.
-    pT = %nan;
-    pS = %nan;
+    pT = ordre_observe(errT(k), errT(k+1));
+    pS = ordre_observe(errS(k), errS(k+1));
     mprintf("n=%d -> %d : pT=%.3f pS=%.3f\n", ..
             ns(k), ns(k+1), pT, pS);
 end
