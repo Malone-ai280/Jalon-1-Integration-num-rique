@@ -54,3 +54,7 @@ tc = [0 1 2 3 4];
 Pc = 10 + 4*tc - tc.^2;
 mprintf("Controle : T4=%.4f (attendu 50) ; S4=%.4f (attendu %.4f)\n", ..
 trapezes(tc, Pc), simpson(tc, Pc), 152/3);
+// Vérification : valeurs conforme au tableau de reference.
+// Ordres : pT ~ 2.00, pS ~ 3.99-4.00.
+Pompes : trapezes = 1.675000 kWh, Simpson = 1.683333 kWh.
+Controle CM1 : T4 = 50, S4 = 50.6667
