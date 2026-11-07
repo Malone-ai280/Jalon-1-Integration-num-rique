@@ -18,8 +18,8 @@ for k = 1:length(ns)
     ET(k) = trapezes(t, y);
     ES(k) = simpson(t, y);
     // TODO 2 : erreurs absolues par rapport a Iref.
-    errT(k) = abs(ET(k) - Iref);
-    errS(k) = abs(ES(k) - Iref);
+    errT(k) = abs(Iref - ET(k));
+    errS(k) = abs(Iref - ES(k));
     mprintf("n=%d T=%.9f S=%.9f ET=%.3e ES=%.3e\n", ..
             n, ET(k), ES(k), errT(k), errS(k));
 end
@@ -49,3 +49,8 @@ mprintf("Ecart=%.6f kWh ; borne des lectures=%.6f kWh\n", ..
 
 // Dans le rapport : dire ce que les calculs permettent de conclure.
 // Ne pas deduire un ordre de convergence des cinq mesures de la pompe.
+// Controle CM1 : P(t) = 10 + 4t - t^2 aux temps 0..4 s.
+tc = [0 1 2 3 4];
+Pc = 10 + 4*tc - tc.^2;
+mprintf("Controle : T4=%.4f (attendu 50) ; S4=%.4f (attendu %.4f)\n", ..
+trapezes(tc, Pc), simpson(tc, Pc), 152/3);
