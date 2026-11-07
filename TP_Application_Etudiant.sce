@@ -1,4 +1,4 @@
-// TP1 MN2 -- application etudiante. Noms des trois membres : ...
+// TP1 MN2 -- application etudiante. Noms des trois membres : BORO Aliou Adama, ATCHOLADI Essozimna Christian, HIEN Désiré
 // Placer ce fichier et TP_01_Outils_Quadrature.sce dans le meme dossier.
 clear;
 exec("TP_01_Outils_Quadrature.sce", -1);
